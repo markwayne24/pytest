@@ -1,0 +1,10 @@
+[run]
+branch = True
+omit = *migrations*,
+       *urls*,
+       *test*,
+       *admin*,
+       ./manage.py,
+       ./pytest-sample/config/*,
+       ./pytest-sample/wsgi.py,
+       *__init__*
