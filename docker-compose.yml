@@ -3,10 +3,13 @@ version: '2'
 services:
   postgres:
     image: postgres:9.6
-  web:
-    restart: always
+    ports:
+    - "5433:5432"
     environment:
-      - DJANGO_SECRET_KEY=local
+      POSTGRES_PASSWORD: yoyo1010
+  pytest:
+    restart: always
+    env_file: .env
     image: web
     build: ./
     command: >
@@ -19,11 +22,3 @@ services:
       - "8000:8000"
     depends_on:
       - postgres
-  documentation:
-    restart: always
-    build: ./
-    command: "mkdocs serve"
-    volumes:
-      - ./:/code
-    ports:
-      - "8001:8001"
